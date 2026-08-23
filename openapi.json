@@ -1,0 +1,142 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Neuro-Stylistic LLM Humanizer & Auditing API",
+    "description": "Universal Action API for 100% humanized, anti-detector LLM generation across ChatGPT Custom Actions, Google Gemini Extensions, Claude, and Grok.",
+    "version": "4.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://neuro-humanizer-mcp.onrender.com",
+      "description": "Render Free Cloud Instance (or replace with your own URL)"
+    }
+  ],
+  "paths": {
+    "/api/audit": {
+      "post": {
+        "operationId": "auditText",
+        "summary": "Audit text for AI detection markers and stylometric burstiness",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The text to analyze for AI detection risk."
+                  }
+                },
+                "required": ["text"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful diagnostic audit report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "humanization_score": {"type": "integer"},
+                    "classification": {"type": "string"},
+                    "detector_risk_level": {"type": "string"},
+                    "burstiness_sigma": {"type": "number"},
+                    "flagged_ai_tokens": {"type": "array", "items": {"type": "string"}},
+                    "recommendations": {"type": "array", "items": {"type": "string"}}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/humanize": {
+      "post": {
+        "operationId": "humanizeText",
+        "summary": "Mutate and humanize text for zero-shot detector evasion",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The text to mutate and humanize."
+                  },
+                  "platform": {
+                    "type": "string",
+                    "enum": ["reddit", "medium", "linkedin", "dev_to", "academic", "email"],
+                    "description": "Target platform adapter."
+                  }
+                },
+                "required": ["text"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Humanized output and verification audit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "platform": {"type": "string"},
+                    "humanized_text": {"type": "string"},
+                    "post_humanization_audit": {"type": "object"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ticl/generate-prompt": {
+      "post": {
+        "operationId": "generateTICLPrompt",
+        "summary": "Generate a Trial-Error-Explain (TICL) few-shot prompt block",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "task_objective": {"type": "string"},
+                  "ai_trial": {"type": "string"},
+                  "human_gold": {"type": "string"}
+                },
+                "required": ["task_objective", "ai_trial", "human_gold"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Formatted TICL prompt block",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ticl_exemplar_block": {"type": "string"},
+                    "instructions": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
