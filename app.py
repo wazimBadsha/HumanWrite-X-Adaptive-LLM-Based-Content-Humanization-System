@@ -18,7 +18,7 @@ app = FastAPI(
     version="4.0.0",
     servers=[
         {"url": "http://localhost:8000", "description": "Local Development Server"},
-        {"url": "https://neuro-humanizer-mcp.onrender.com", "description": "Render Free Cloud Instance"}
+        {"url": "https://humanwrite-x-adaptive-llm-based-content.onrender.com", "description": "Render Free Cloud Instance"}
     ]
 )
 
