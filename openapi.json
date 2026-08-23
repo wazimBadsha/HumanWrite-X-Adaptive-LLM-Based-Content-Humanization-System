@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://neuro-humanizer-mcp.onrender.com",
+      "url": "https://humanwrite-x-adaptive-llm-based-content.onrender.com",
       "description": "Render Free Cloud Instance (or replace with your own URL)"
     }
   ],
