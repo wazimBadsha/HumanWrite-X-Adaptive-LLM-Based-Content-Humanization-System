@@ -5,12 +5,12 @@
     "description": "Universal Action API for 100% humanized, anti-detector LLM generation across ChatGPT Custom Actions, Google Gemini Extensions, Claude, and Grok.",
     "version": "4.0.0"
   },
-  "servers": [
-    {
-      "url": "https://humanwrite-x-adaptive-llm-based-content.onrender.com",
-      "description": "Render Free Cloud Instance (or replace with your own URL)"
-    }
-  ],
+"servers": [
+  {
+    "url": "https://YOUR-OWN-RENDER-URL.onrender.com",
+    "description": "Deploy your own instance and replace this URL"
+  }
+],
   "paths": {
     "/api/audit": {
       "post": {
