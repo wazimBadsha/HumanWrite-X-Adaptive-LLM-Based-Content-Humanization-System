@@ -557,11 +557,10 @@ Senior Full Stack Web, Mobile & AI Software Engineer
 
 ---
 
-# License
+# 📄 License
 
-Add the project's actual license here before publishing the repository.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. You are free to use, modify, and distribute this software in personal and commercial applications.
 
-If the repository does not currently have a license, do not claim that it is open-source under a specific license until one has been added.
 
 ---
 
