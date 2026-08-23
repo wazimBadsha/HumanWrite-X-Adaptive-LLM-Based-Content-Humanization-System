@@ -11,6 +11,8 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from engine import audit_content, humanize_content, compute_stylometrics, build_ticl_exemplar
+# Base URL dynamically determined from environment
+SERVER_URL = os.getenv("RENDER_EXTERNAL_URL", os.getenv("SERVER_URL", "http://localhost:8000"))
 
 app = FastAPI(
     title="Neuro-Stylistic LLM Humanizer & Auditing MCP",
@@ -18,7 +20,7 @@ app = FastAPI(
     version="4.0.0",
     servers=[
         {"url": "http://localhost:8000", "description": "Local Development Server"},
-        {"url": "https://humanwrite-x-adaptive-llm-based-content.onrender.com", "description": "Render Free Cloud Instance"}
+        {"url": SERVER_URL, "description": "Active Production Server"}
     ]
 )
 
